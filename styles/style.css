@@ -39,9 +39,9 @@ body {
   text-transform: none;
   background-image: linear-gradient(
     to right,
-    rgb(28, 110, 164) 0%,
-    rgb(35, 136, 203) 50%,
-    rgb(20, 78, 117) 100%
+    rgb(42, 156, 8) 0%,
+    rgb(52, 194, 10) 50%,
+    rgb(63, 230, 14) 100%
   );
   box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
   border: 2px solid rgb(28, 110, 164);
@@ -54,7 +54,5 @@ body {
   background: #144e75;
 }
 .myButton {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+  align-self: center;
 }
