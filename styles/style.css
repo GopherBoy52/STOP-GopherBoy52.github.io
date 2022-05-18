@@ -55,4 +55,5 @@ body {
 }
 .myButton {
   text-align: center;
+  align-self: flex-start;
 }
