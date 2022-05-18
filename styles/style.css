@@ -53,3 +53,7 @@ body {
 .myButton:active {
   background: #144e75;
 }
+.myButton {
+  margin-right: auto;
+  margin-left: auto;
+}
