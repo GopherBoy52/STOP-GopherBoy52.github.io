@@ -54,6 +54,7 @@ body {
   background: #144e75;
 }
 .myButton {
+  display: block;
   margin-right: auto;
   margin-left: auto;
 }
