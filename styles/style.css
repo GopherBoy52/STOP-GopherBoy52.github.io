@@ -20,7 +20,7 @@ body {
   margin-left: auto;
 }
 
-h1 {
+.title {
   text-align: center;
   color: green;
 }
