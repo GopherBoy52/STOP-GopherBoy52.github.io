@@ -26,6 +26,9 @@ body {
 }
 
 .myButton {
+  width: 20%;
+  margin: 0 auto;
+  position: relative;
   color: rgb(255, 255, 255);
   font-size: 30px;
   line-height: 30px;
@@ -45,14 +48,11 @@ body {
   );
   box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;
   border: 2px solid rgb(28, 110, 164);
-  display: inline-block;
+  display: block;
 }
 .myButton:hover {
   background: #1c6ea4;
 }
 .myButton:active {
   background: #144e75;
-}
-.myButton {
-  align-items: center;
 }
