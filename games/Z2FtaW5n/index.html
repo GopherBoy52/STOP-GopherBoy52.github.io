@@ -13,13 +13,119 @@
   >Snake</a
 
 </head>
+<head>
+    <title>Snake Game</title>
+    <style>
+        #game-board {
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Snake Game</h1>
+    <div id="game-board"></div>
+    <script>
+        // Set up game variables
+        const boardSize = 20; // Size of game board in squares
+        let snake = [{x: 10, y: 10}]; // Snake starts at center of board
+        let direction = "right"; // Snake starts moving right
+        let food = generateFood(); // Generate initial food position
+        let score = 0;
 
+        // Set up game board
+        const board = document.getElementById("game-board");
+        for (let i = 0; i < boardSize; i++) {
+            const row = document.createElement("div");
+            row.classList.add("row");
+            for (let j = 0; j < boardSize; j++) {
+                const square = document.createElement("div");
+                square.classList.add("square");
+                row.appendChild(square);
+            }
+            board.appendChild(row);
+        }
 
-<html>
-  <body onload="brython()">
-    <script type="text/python">
-      import browser
-      browser.alert("Hello Real Python!")
-    </script>
-  <h1 class="title">Games</h1>
-</html>
+        // Set up keyboard controls
+        document.addEventListener("keydown", event => {
+            if (event.key === "ArrowUp" && direction !== "down") {
+                direction = "up";
+            }
+            if (event.key === "ArrowDown" && direction !== "up") {
+                direction = "down";
+            }
+            if (event.key === "ArrowLeft" && direction !== "right") {
+                direction = "left";
+            }
+            if (event.key === "ArrowRight" && direction !== "left") {
+                direction = "right";
+            }
+        });
+
+        // Start game loop
+        setInterval(() => {
+            // Move snake
+            const head = snake[0];
+            if (direction === "up") {
+                snake.unshift({x: head.x, y: head.y - 1});
+            }
+            if (direction === "down") {
+                snake.unshift({x: head.x, y: head.y + 1});
+            }
+            if (direction === "left") {
+                snake.unshift({x: head.x - 1, y: head.y});
+            }
+            if (direction === "right") {
+                snake.unshift({x: head.x + 1, y: head.y});
+            }
+
+            // Check for collision with walls or self
+            const newHead = snake[0];
+            if (newHead.x < 0 || newHead.x >= boardSize || newHead.y < 0 || newHead.y >= boardSize) {
+                alert("Game over! You hit a wall.");
+                location.reload();
+            }
+            for (let i = 1; i < snake.length; i++) {
+                if (newHead.x === snake[i].x && newHead.y === snake[i].y) {
+                    alert("Game over! You hit yourself.");
+                    location.reload();
+                }
+            }
+
+            // Check for collision with food
+            if (newHead.x === food.x && newHead.y === food.y) {
+                score++;
+                food = generateFood();
+            } else {
+                snake.pop();
+            }
+
+            // Update game board
+            const squares = document.querySelectorAll(".square");
+            squares.forEach(square => {
+                square.classList.remove("snake", "food");
+            });
+            snake.forEach(segment => {
+                const index = segment.y * boardSize + segment.x;
+                squares[index.classList.add("snake");
+        });
+        const foodIndex = food.y * boardSize + food.x;
+        squares[foodIndex].classList.add("food");
+
+        // Update score display
+        document.getElementById("score").innerText = score;
+    }, 100);
+
+    // Generate random food position
+    function generateFood() {
+        let food;
+        do {
+            food = {
+                x: Math.floor(Math.random() * boardSize),
+                y: Math.floor(Math.random() * boardSize)
+            };
+        } while (snake.some(segment => segment.x === food.x && segment.y === food.y));
+        return food;
+    }
+</script
